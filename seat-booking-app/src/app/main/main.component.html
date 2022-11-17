@@ -1,0 +1,43 @@
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5  shadow border-right-0" id="inputDiv">
+            <div class="row d-flex justify-content-center m-1 mt-5 bg-gery border shadow">
+                <div class="col-md-8 d-flex justify-content-center  mt-5 mb-2 ">
+                    <input type="text" class="form-control" name="" id="numberOfTickets" [(ngModel)]="numberOfTickets" placeholder="Enter the number of seats to be booked">
+                </div>
+                <div class="col-md-8 d-flex justify-content-end  mb-5 ">
+                    <button type="button" class="btn btn-outline-primary" (click)="BookNow()">Book Now</button>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center  m-4 bg-gery">
+                <div class="col-md-8 d-flex justify-content-center  mb-5 ">
+                    <button type="button" class="btn btn-outline-warning" (click)="EndShow()"> Do you want to End Show?</button>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center shadow m-4 bg-gery" *ngIf="showMessage && numberOfTickets==0">
+                <div class="bg-warning rounded shodow p-3">
+                    {{allTickets}} Seats are booked SuccessFully!. Booked Seat Numbers are <span class="bg-success p-1" *ngFor="let seat of mySeats">{{seat}} ,</span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center m-4 bg-gery" *ngIf="endTheShow">
+                <div class="bg-danger border rounded shodow p-3 text-center text-color-primary">
+                    Show is Finished! See you soon.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 d-flex justify-content-center shadow border border-secondary" id="mainDiv">
+            <div class="row">
+                <div class="col-md-12"> 
+                    <div>
+                        <div class="row mt-4 mb-4" *ngFor="let row of theatre" style="display: flex;">
+                            <div [ngClass]="col.isBooked?'booked':''" class="col" *ngFor="let col of row" style="border: 1px solid black;">
+                                <b>{{col.seatNo}}</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
